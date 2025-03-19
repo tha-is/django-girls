@@ -10,16 +10,13 @@
         <h1><a href="/">Blog Django Girls</a></h1>
     </div>
 
-    <div class="main">
-        <p>publicado: 19.03.2025, 1:59 PM</p>
-        <h2><a href="">Meu primeiro post</a></h2>
-        <p>Testando meu primeiro post no blog feito com Django, framework de desenvolvimento web</p>
-    </div>
-
-    <div class="main">
-        <p>publicado: 19.03.2025, 2:01 PM</p>
-        <h2><a href="">Meu segundo post</a></h2>
-        <p>Testando meu primeiro post no blog feito com Django, framework de desenvolvimento web</p>
-    </div>
+{% for post in posts %}
+<div class="container">
+    <p>published: {{ post.published_date }}</p>
+    <p>created: {{ post.author }}</p>
+    <h2><a href="">{{ post.title }}</a></h2>
+    <p>{{ post.text|linebreaksbr }}</p>
+</div>
+{% endfor %}
 </body>
 </html>
