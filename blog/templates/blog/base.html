@@ -1,28 +1,60 @@
 {% load static %}
 <html>
-    <head>
-        <title>Django Girls blog</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
 
-    </head>
-    <body>
-        <div class="page-header">
+<head>
+    <title>Projeto Django Girls</title>
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/custom.css' %}">
+</head>
+
+<body class="container-fluid">
+    <div class="row"> <!--CLASSE (ROW) PRINCIPAL DO LAYOUT, 1 LINHA PARA 4 COLUNAS SENDO A NAV 100% DE WIDTH E CRIANDO OUTRA LINHA)-->
+        <!--NAVBAR-->
+        <div class="col-12 sticky-top navbar" id="my-nav">
             {% if user.is_authenticated %}
-    <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-{% endif %}
-            <h1><a href="/">Django Girls Blog</a></h1>
-        </div>
-        <div class="content container">
-            <div class="row">
-                <div class="col-md-8">
-                {% block content %}
-                {% endblock %}
-                </div>
+            <div class="navbar-link">
+                <a href="{% url 'post_new' %}" class="top-menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+                      </svg>
+                </a>
+                <a href="{% url 'post_draft_list' %}" class="top-menu">Drafts</span></a>
+            </div>
+            {% endif %}
+            <div class="navbar-brand">
+                <a href="/" class="link-underline link-underline-opacity-0 link-underline-opacity-0-hover">
+                    Projeto Django Girls</a>
             </div>
         </div>
-    </body>
-    
+        <!-- SIDEBAR DOS PROJETOS -->
+        <div class="col-2" id="sidebar">
+            <div class="sidebar-container p-2">
+                <span class="title">Tudo que desenvolvi</span>
+                <ul>
+                <li><a href="#"><img src="https://64.media.tumblr.com/1bfc42ab9e9565e217f306eb20063060/tumblr_mwvq73QU651qkbbtzo8_250.png" class="rounded"> </a></li>
+                <li><a href="#"><img src="https://64.media.tumblr.com/ffb1b98407249c41d8c034e37d564486/tumblr_mwvq73QU651qkbbtzo1_250.png" alt="" class="rounded"></a></li>
+                <li><a href="#"><img src="https://64.media.tumblr.com/94392a97c871551d169d2bf1f2712c46/tumblr_mwvq73QU651qkbbtzo7_250.png" alt="" class="rounded "></a></li>
+                <li><a href="#"><img src="https://64.media.tumblr.com/a76ffa6b328766ec5db23ffd4eac7449/tumblr_mwvq73QU651qkbbtzo9_250.png" alt="" class="rounded "></a></li>
+                </ul>
+        </div>
+        </div>
+       <!-- ÁREA DOS POSTS --> 
+        <div class="col-8 pt-2">
+                {% block content %}
+                {% endblock %}
+        </div>
+        <!-- SIDEBAR DOS LINKS DE NAVEGAÇÃO -->
+        <div class="col-2" id="sidebar">
+            <div class="sidebar-container p-2">
+                <span class="title">Nav</span>
+                <ul>
+                <li><a href="#">README.md</a></li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                </ul>
+        </div>
+    </div>
+    <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+
 </html>
